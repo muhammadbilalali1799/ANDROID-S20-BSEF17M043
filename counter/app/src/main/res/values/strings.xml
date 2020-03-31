@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Counting/Reset</string>
+    <string name="btn_increment">inc</string>
+    <string name="btn_reset">reset</string>
+</resources>
