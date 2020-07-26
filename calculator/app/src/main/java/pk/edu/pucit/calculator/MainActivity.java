@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import net.objecthunter.exp4j.Expression;
 import net.objecthunter.exp4j.ExpressionBuilder;
 
@@ -133,10 +135,13 @@ public class MainActivity extends AppCompatActivity {
                         equation.setText(equation.getText().toString() + "+");
                         isDotExixtForValue=false;
                     }
+                    else{
+                        Toast.makeText(MainActivity.this, "Sign after Sign Incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    equation.setText("");
+                    Toast.makeText(MainActivity.this, "First, Enter Number!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -151,10 +156,13 @@ public class MainActivity extends AppCompatActivity {
                         equation.setText(equation.getText().toString() + "-");
                         isDotExixtForValue=false;
                     }
+                    else{
+                        Toast.makeText(MainActivity.this, "Sign after Sign Incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    equation.setText("");
+                    Toast.makeText(MainActivity.this, "First, Enter Number!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,10 +177,13 @@ public class MainActivity extends AppCompatActivity {
                         equation.setText(equation.getText().toString() + "*");
                         isDotExixtForValue=false;
                     }
+                    else{
+                        Toast.makeText(MainActivity.this, "Sign after Sign Incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    equation.setText("");
+                    Toast.makeText(MainActivity.this, "First, Enter Number!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -187,10 +198,13 @@ public class MainActivity extends AppCompatActivity {
                         equation.setText(equation.getText().toString() + "/");
                         isDotExixtForValue=false;
                     }
+                    else{
+                        Toast.makeText(MainActivity.this, "Sign after Sign Incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    equation.setText("");
+                    Toast.makeText(MainActivity.this, "First, Enter Number!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -205,10 +219,13 @@ public class MainActivity extends AppCompatActivity {
                         equation.setText(equation.getText().toString() + "%");
                         isDotExixtForValue=false;
                     }
+                    else{
+                        Toast.makeText(MainActivity.this, "Sign after Sign Incorrect", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
-                    equation.setText("");
+                    Toast.makeText(MainActivity.this, "First, Enter Number!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -231,6 +248,9 @@ public class MainActivity extends AppCompatActivity {
                             isDotExixtForValue=true;
                         }
                     }
+                    else {
+                        Toast.makeText(MainActivity.this, "Single Value can't Contain two Dots", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {
@@ -252,6 +272,9 @@ public class MainActivity extends AppCompatActivity {
                     input = input.substring(0, input.length() - 1);
                     equation.setText(input + "");
                 }
+                else {
+                    Toast.makeText(MainActivity.this, "Empty Expression!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnEqual.setOnClickListener(new View.OnClickListener() {
@@ -260,6 +283,11 @@ public class MainActivity extends AppCompatActivity {
                 if (!equation.getText().toString().equals("")) {
                     input = equation.getText().toString();
                     lastChar = input.substring(input.length()-1);
+                    if(lastChar.equals("."))
+                    {
+                        equation.setText(equation.getText().toString() + "0");
+                        lastChar="0";
+                    }
                     if (!lastChar.equals("+") && !lastChar.equals("-") && !lastChar.equals("*") && !lastChar.equals("/") && !lastChar.equals("%") && !lastChar.equals(".")){
                         input = equation.getText().toString();
                         input = input.replaceAll("%","/100*");
@@ -269,11 +297,20 @@ public class MainActivity extends AppCompatActivity {
                             // Calculate the result and display
                             double res = expression.evaluate();
                             result.setText(Double.toString(res));
+                            //after showing result set equation to zero
+                            equation.setText("0");
                         } catch (ArithmeticException ex) {
                             // Display an error message
                             result.setText("Error");
                         }
+
                     }
+                    else{
+                        Toast.makeText(MainActivity.this, "Expression Incorrect...", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Empty Expression!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
