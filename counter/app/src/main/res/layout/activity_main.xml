@@ -8,36 +8,64 @@
     android:background="@drawable/background">
 
     <TextView
-        android:id="@+id/count"
-        android:textSize="32sp"
+        android:id="@+id/conuterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="count"
+        android:layout_marginBottom="10sp"
+        android:text="---"
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/increment"
+        android:id="@+id/incBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/btn_increment"
-        android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/reset"
+        android:background="#FFF"
+        android:textColor="#000"
+        android:text="Inc"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/conuterText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/count" />
+        app:layout_constraintEnd_toStartOf="@id/decBtn"
+        android:layout_marginTop="10dp"
+        />
 
     <Button
-        android:id="@+id/reset"
+        android:id="@+id/decBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_reset"
-        android:textSize="28sp"
+        android:background="#FFF"
+        android:textColor="#000"
+        android:text="Dec"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/conuterText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/increment"
-        app:layout_constraintTop_toTopOf="@+id/increment" />
+        app:layout_constraintStart_toEndOf="@id/incBtn"
+        android:layout_marginTop="10dp"
+        />
 
-
+    <Button
+        android:id="@+id/resetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#FFF"
+        android:text="Reset"
+        android:textAllCaps="false"
+        android:textColor="#000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/incBtn"
+        app:layout_constraintStart_toEndOf = "@id/incBtn"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
